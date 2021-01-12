@@ -1,8 +1,12 @@
 package io.feature.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.boot.model.source.spi.FetchCharacteristics;
 
 import javax.persistence.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Backlog {
@@ -20,12 +24,22 @@ public class Backlog {
     private Project project;
 
     // one to many projecttasks
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "backlog")
+    private List<ProjectTask> projectTasks = new ArrayList<>();
 
     public Backlog() {
     }
 
     public Project getProject() {
         return project;
+    }
+
+    public List<ProjectTask> getProjectTasks() {
+        return projectTasks;
+    }
+
+    public void setProjectTasks(List<ProjectTask> projectTasks) {
+        this.projectTasks = projectTasks;
     }
 
     public void setProject(Project project) {
