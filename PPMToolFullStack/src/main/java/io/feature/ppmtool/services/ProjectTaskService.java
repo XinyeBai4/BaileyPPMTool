@@ -8,6 +8,8 @@ import io.feature.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectTaskService {
 
@@ -29,6 +31,7 @@ public class ProjectTaskService {
         Integer BacklogSequence = backlog.getPTSequence();
         // Update the BL sequence
         BacklogSequence++;
+        backlog.setPTSequence(BacklogSequence);
 
         // Add sequence to project task
         projectTask.setProjectSequence(projectIdentifier + "-" + BacklogSequence);
@@ -45,5 +48,9 @@ public class ProjectTaskService {
         }
 
         return projectTaskRepository.save(projectTask);
+    }
+
+    public Iterable<ProjectTask>findBacklogById(String id) {
+        return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
     }
 }
