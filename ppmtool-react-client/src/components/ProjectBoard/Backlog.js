@@ -8,12 +8,22 @@ class Backlog extends Component {
             <ProjectTasks key={project_task.id} project_task={project_task} />
         ));
 
-        // let todoItems = [];
-        // let inProgressItems = [];
-        // let doneItems = [];
+        let todoItems = [];
+        let inProgressItems = [];
+        let doneItems = [];
 
         for (let i=0; i < tasks.length; i++) {
-            console.log(tasks[i]);
+            const status = tasks[i].props.project_task.status;
+            if (status === "TO_DO") {
+                todoItems.push(tasks[i]);
+            }
+            else if (status === "IN_PROGRESS") {
+                inProgressItems.push(tasks[i]);
+            }
+            else if (status === "DONE") {
+                doneItems.push(tasks[i]);
+            }
+            
         }
         
 
@@ -32,7 +42,7 @@ class Backlog extends Component {
                         {
                             // <!-- SAMPLE PROJECT TASK STARTS HERE -->
                         }
-                        {tasks}
+                        {todoItems}
                         {
                             // <!-- SAMPLE PROJECT TASK ENDS HERE -->
                         }
@@ -46,7 +56,7 @@ class Backlog extends Component {
                         {
                             // <!-- SAMPLE PROJECT TASK STARTS HERE -->
                         }
-                        
+                        {inProgressItems}
                         {
                             // <!-- SAMPLE PROJECT TASK ENDS HERE -->
                         }
@@ -60,7 +70,7 @@ class Backlog extends Component {
                         {
                             // <!-- SAMPLE PROJECT TASK STARTS HERE -->
                         }
-                       
+                        {doneItems}
                         {
                             // <!-- SAMPLE PROJECT TASK ENDS HERE -->
                         }
