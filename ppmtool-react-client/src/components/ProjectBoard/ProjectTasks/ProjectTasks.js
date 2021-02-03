@@ -4,16 +4,13 @@ class ProjectTasks extends Component {
     render() {
         const {project_task} = this.props;
         
-        console.log(project_task)
 
         return (
             
             <div className="card mb-1 bg-light">
 
                 <div className="card-header text-primary">
-                    console.log(project_task)
-                    ID: {project_task.projectSequence} -- Priority: {" "}
-                    {project_task.priority}
+                    
                 </div>
                 <div className="card-body bg-light">
                     <h5 className="card-title">{project_task.summary}</h5>
