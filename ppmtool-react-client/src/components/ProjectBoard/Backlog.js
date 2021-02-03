@@ -3,7 +3,15 @@ import ProjectTasks from './ProjectTasks/ProjectTasks'
 
 class Backlog extends Component {
     render() {
+        const {project_tasks_prop} = this.props;
+        const tasks = project_tasks_prop.map(project_task => (
+                <ProjectTasks key={project_task.id} project_task={project_task} />
+        ));
+        
+
         return (
+
+            
             
             // <!-- Backlog STARTS HERE -->
             
@@ -15,10 +23,10 @@ class Backlog extends Component {
                                 <h3>TO DO</h3>
                             </div>
                         </div>
+                        {tasks}
                         {
                             // <!-- SAMPLE PROJECT TASK STARTS HERE -->
                         }
-                        <ProjectTasks />
                         {
                             // <!-- SAMPLE PROJECT TASK ENDS HERE -->
                         }

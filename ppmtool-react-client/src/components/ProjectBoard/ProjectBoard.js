@@ -7,8 +7,17 @@ import { getBacklog } from '../../actions/backlogActions';
 
 
 class ProjectBoard extends Component {
+
+    // constructor to handle errors
+
+    componentDidMount() {
+        const {id} = this.props.match.params;
+        this.props.getBacklog(id);
+    }
+
     render() {
         const {id} = this.props.match.params;
+        const {project_tasks} = this.props.backlog;
 
         return (
             // <!-- Project Board Starts Here MIND OTHER COMPONENTS WHEN COPY AND PASTING -->
@@ -19,7 +28,7 @@ class ProjectBoard extends Component {
                 </Link>
                 <br />
                 <hr />
-                <Backlog />
+                <Backlog project_tasks_prop={project_tasks} />
             </div>
 
             // <!-- PROJECT BOARD ENDS HERE -->
@@ -36,4 +45,4 @@ const mapStateToProps = state => ({
     backlog: state.backlog
 });
 
-export default connect(mapStateToProps, getBacklog)(ProjectBoard);
+export default connect(mapStateToProps, {getBacklog})(ProjectBoard);
