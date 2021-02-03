@@ -4,8 +4,6 @@ class ProjectTasks extends Component {
     render() {
         return (
             
-            // <!-- SAMPLE PROJECT TASK STARTS HERE -->
-            
             <div className="card mb-1 bg-light">
 
                 <div className="card-header text-primary">
@@ -24,9 +22,6 @@ class ProjectTasks extends Component {
                     </button>
                 </div>
             </div>
-
-            
-            // <!-- SAMPLE PROJECT TASK ENDS HERE -->
             
         )
     }
